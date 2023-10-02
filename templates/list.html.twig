@@ -1,26 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Personnalités{% endblock %}
+{% block title %}Liste des Contacts{% endblock %}
 
 {% block body %}
-    <h1>Liste des Personnalités</h1>
-    
-    <table>
-        <thead>
+    <h1 class="mb-4">Liste des Contacts</h1>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <th>Prénom</th>
                 <th>Nom</th>
-                <th>Âge</th>
-                <th>Catégorie</th>
+                <th>Prénom</th>
+                <th>Date d'anniversaire</th>
+                <th>Numéro de téléphone</th>
+                <th>Email</th>
+                <th>Adresse postale</th>
             </tr>
         </thead>
         <tbody>
-            {% for personnalite in personnalites %}
+            {% for contact in contacts %}
                 <tr>
-                    <td>{{ personnalite.prenom }}</td>
-                    <td>{{ personnalite.nom }}</td>
-                    <td>{{ personnalite.age }}</td>
-                    <td>{{ personnalite.categorie }}</td>
+                    <td>{{ contact.nom }}</td>
+                    <td>{{ contact.prenom }}</td>
+                    <td>{{ contact.dateAnniversaire|date('d/m/Y') }}</td>
+                    <td>{{ contact.numeroTelephone }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.adressePostale }}</td>
                 </tr>
             {% endfor %}
         </tbody>

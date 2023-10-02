@@ -2,27 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Personnalite;
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PersonnaliteType extends AbstractType
+class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('prenom')
             ->add('nom')
-            ->add('age')
-            ->add('categorie')
+            ->add('dateAnniversaire')
+            ->add('numeroTelephone')
+            ->add('email')
+            ->add('adressePostale')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Personnalite::class,
+            'data_class' => Contact::class,
         ]);
     }
 }
