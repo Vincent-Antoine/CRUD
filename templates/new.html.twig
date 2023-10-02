@@ -3,23 +3,41 @@
 {% block title %}Ajouter un Contact{% endblock %}
 
 {% block body %}
-    <h1 class="mb-4">Ajouter un Contact</h1>
+    {% include 'header.html.twig' %}
 
-    <div class="card">
-        <div class="card-body">
-            {{ form_start(form, {'attr': {'class': 'form'}}) }}
-                <div class="form-group">
-                    {{ form_label(form.nom) }}
-                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <!-- Répétez pour chaque champ... -->
-                <div class="form-group">
-                    {{ form_label(form.prenom) }}
-                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <!-- ... -->
-                <button type="submit" class="btn btn-primary">Ajouter</button>
-            {{ form_end(form) }}
+    <div class="container mt-5">
+        <h1 class="mb-4">Ajouter un Contact</h1>
+
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form_label(form.nom) }}</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form_label(form.prenom) }}</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                    </div>
+
+                    <!-- Répétez pour chaque champ de la même manière ... -->
+
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </div>
+
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,12 @@
+/* CSS pour les effets de hover du menu */
+nav a {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    /* Transition douce */
+}
+
+nav a:hover {
+    color: #ffc107;
+    /* Changement de couleur au survol (jaune Bootstrap par exemple) */
+    text-decoration: underline;
+    /* Soulignement au survol */
+}

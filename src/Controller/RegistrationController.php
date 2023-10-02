@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 
 class RegistrationController extends AbstractController
 {
@@ -45,5 +47,19 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/new", name="contact_new")
+     */
+    public function new(Request $request, EntityManagerInterface $entityManager)
+    {
+        // Vérifie si l'utilisateur est connecté
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $contact = new Contact();
+        // ...
     }
 }
