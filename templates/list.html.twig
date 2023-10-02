@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Personnalités{% endblock %}
+
+{% block body %}
+    <h1>Liste des Personnalités</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Âge</th>
+                <th>Catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for personnalite in personnalites %}
+                <tr>
+                    <td>{{ personnalite.prenom }}</td>
+                    <td>{{ personnalite.nom }}</td>
+                    <td>{{ personnalite.age }}</td>
+                    <td>{{ personnalite.categorie }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
