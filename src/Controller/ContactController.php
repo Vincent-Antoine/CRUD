@@ -64,6 +64,8 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setUser($this->getUser());
+            $entityManager->persist($contact);
             $entityManager->flush();
 
             // Redirigez vers la liste après la modification
@@ -80,6 +82,7 @@ class ContactController extends AbstractController
      */
     public function delete(Contact $contact, EntityManagerInterface $entityManager): Response
     {
+
         $entityManager->remove($contact);
         $entityManager->flush();
 

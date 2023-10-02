@@ -108,4 +108,24 @@ class Contact
 
         return $this;
     }
+
+    // ...
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="contacts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 }

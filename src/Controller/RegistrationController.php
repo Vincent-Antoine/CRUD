@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
+
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
