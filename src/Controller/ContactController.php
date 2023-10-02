@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class ContactController extends AbstractController
 {
@@ -51,5 +53,37 @@ class ContactController extends AbstractController
     public function homepage()
     {
         return $this->render('base.html.twig');
+    }
+
+    /**
+     * @Route("/contact/edit/{id}", name="contact_edit")
+     */
+    public function edit(Request $request, Contact $contact, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            // Redirigez vers la liste après la modification
+            return $this->redirectToRoute('contact_list');
+        }
+
+        return $this->render('Contact/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/contact/delete/{id}", name="contact_delete")
+     */
+    public function delete(Contact $contact, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($contact);
+        $entityManager->flush();
+
+        // Redirigez vers la liste après la suppression
+        return $this->redirectToRoute('contact_list');
     }
 }

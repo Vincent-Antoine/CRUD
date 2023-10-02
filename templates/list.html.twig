@@ -10,10 +10,10 @@
             <tr>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Date d'anniversaire</th>
                 <th>Numéro de téléphone</th>
                 <th>Email</th>
                 <th>Adresse postale</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +21,13 @@
                 <tr>
                     <td>{{ contact.nom }}</td>
                     <td>{{ contact.prenom }}</td>
-                    <td>{{ contact.dateAnniversaire|date('d/m/Y') }}</td>
                     <td>{{ contact.numeroTelephone }}</td>
                     <td>{{ contact.email }}</td>
                     <td>{{ contact.adressePostale }}</td>
+                    <td>
+                        <a href="{{ path('contact_edit', {'id': contact.id}) }}" class="btn btn-warning">Modifier</a>
+                        <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce contact ?');">Supprimer</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

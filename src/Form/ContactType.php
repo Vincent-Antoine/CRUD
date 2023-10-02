@@ -14,11 +14,9 @@ class ContactType extends AbstractType
         $builder
             ->add('prenom')
             ->add('nom')
-            ->add('dateAnniversaire')
             ->add('numeroTelephone')
             ->add('email')
-            ->add('adressePostale')
-        ;
+            ->add('adressePostale');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

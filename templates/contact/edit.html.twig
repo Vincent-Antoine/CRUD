@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Contact{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Modifier Contact</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.nom, 'Nom') }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.prenom, 'Prénom') }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(form.numeroTelephone, 'Numéro de téléphone') }}
+            {{ form_widget(form.numeroTelephone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email, 'Email') }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.adressePostale, 'Adresse postale') }}
+            {{ form_widget(form.adressePostale, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            <a href="{{ path('contact_list') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}
