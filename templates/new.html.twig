@@ -28,7 +28,29 @@
                         </div>
                     </div>
 
-                    <!-- Répétez pour chaque champ de la même manière ... -->
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form_label(form.numeroTelephone) }}</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.numeroTelephone, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.numeroTelephone) }}
+                        </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form_label(form.email) }}</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form_label(form.adressePostale) }}</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.adressePostale, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.adressePostale) }}
+                        </div>
+                    </div>
 
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-10">
